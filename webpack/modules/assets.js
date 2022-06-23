@@ -6,7 +6,7 @@ exports.connectHtml = () => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: `${STATIC_DIRECTORY}/template.html`,
-      title: 'React typescript webpack starter! 🚀 ',
+      title: 'Kote 🚀 ',
       favicon: `${STATIC_DIRECTORY}/favicon/favicon.ico`,
     }),
   ],
