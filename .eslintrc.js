@@ -82,5 +82,9 @@ module.exports = {
       maximum: 1, when: 'always',
     }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.tsx'] }],
+    'react/function-component-definition': [2, {
+      namedComponents: ['arrow-function', 'function-declaration'],
+      unnamedComponents: ['arrow-function'],
+    }],
   },
 }
