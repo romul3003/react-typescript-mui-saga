@@ -3,6 +3,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const { ProvidePlugin, DefinePlugin } = require('webpack')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 exports.connectBuildProgressIndicator = () => ({
   plugins: [new WebpackBar()],
@@ -30,6 +31,7 @@ exports.defineEnvVariables = () => {
         __STAGE__: NODE_ENV === 'stage',
         __PROD__: NODE_ENV === 'production',
       }),
+      new Dotenv(),
     ],
   }
 }
