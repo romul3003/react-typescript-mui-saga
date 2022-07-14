@@ -2,7 +2,7 @@ import { FC } from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 
 import { /* styled, */ ThemeProvider } from '@mui/material/styles'
-import { Button, Container, Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { theme } from './theme/theme'
@@ -22,12 +22,6 @@ const App:FC = () => {
           >
             Hello Kitty!
           </Typography>
-          <Button
-            variant="contained"
-            onClick={() => dispatch({ type: 'LOAD_DATA' })}
-          >
-            Click me
-          </Button>
         </Container>
       </ThemeProvider>
     </CssBaseline>
