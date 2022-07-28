@@ -1,13 +1,14 @@
 import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from '@redux-devtools/extension'
 
-import reducer from '../redux/reducers'
+import { rootReducer } from './rootReducer'
 import { middleware, sagaMiddleware } from './middleware'
 import rootSaga from './rootSaga'
+import { createReduxHistory } from './reduxHistoryContext'
 
 // mount it on the Store
-const store = createStore(
-  reducer,
+export const store = createStore(
+  rootReducer,
   composeWithDevTools(
     applyMiddleware(...middleware),
   ),
@@ -16,4 +17,4 @@ const store = createStore(
 // then run the saga
 sagaMiddleware.run(rootSaga)
 
-export default store
+export const history = createReduxHistory(store)
