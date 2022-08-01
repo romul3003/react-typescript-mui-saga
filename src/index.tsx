@@ -9,8 +9,6 @@ import { store, history } from './init/store'
 
 import { theme } from './theme/theme'
 import App from './pages/App'
-import Blog from './pages/Blog'
-import NotFound from './pages/NotFound'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Failed to find the root element')
@@ -28,14 +26,6 @@ root.render(
             <Route
               path="/"
               element={<App />}
-            />
-            <Route
-              path="/blog"
-              element={<Blog />}
-            />
-            <Route
-              path="*"
-              element={<NotFound />}
             />
           </Routes>
         </Router>
