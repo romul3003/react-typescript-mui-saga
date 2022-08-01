@@ -4,7 +4,7 @@ import { routerReducer } from './reduxHistoryContext'
 
 const initialState = {}
 
-export const appReducer = (state = initialState, action) => state
+export const appReducer = (state = initialState) => state
 
 export const rootReducer = combineReducers({
   app: appReducer,

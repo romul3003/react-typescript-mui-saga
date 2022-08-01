@@ -1,5 +1,5 @@
 import {
-  spawn, call, all, take, fork, cancel, actionChannel,
+  spawn, call, all, take, actionChannel,
 } from 'redux-saga/effects'
 import { SagaIterator } from '@redux-saga/core'
 import loadBasicData from '../redux/initialSagas'
