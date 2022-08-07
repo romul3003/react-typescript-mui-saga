@@ -1,3 +1,8 @@
+import { all, spawn } from 'redux-saga/effects'
+import charactersSaga from '../redux/characters/saga'
+
 export default function* rootSaga(): Generator {
-  console.log('root saga')
+  const sagas = [charactersSaga]
+
+  yield all(sagas.map(s => spawn(s)))
 }

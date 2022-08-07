@@ -71,6 +71,8 @@ module.exports = {
     'more/no-numeric-endings-for-variables': 2,
     'more/no-duplicated-chains': 2,
 
+    'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
+
     'react/prop-types': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -87,5 +89,6 @@ module.exports = {
       namedComponents: ['arrow-function', 'function-declaration'],
       unnamedComponents: ['arrow-function'],
     }],
+    'react/require-default-props': [0],
   },
 }

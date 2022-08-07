@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
-import { blogReducer } from '../redux/blog/reducer'
+import characterDetailsReducer from '../redux/characterDetails/reducer'
+import CharactersReducer from '../redux/characters/reducer'
 import { routerReducer } from './reduxHistoryContext'
 
 const initialState = {}
@@ -8,7 +9,8 @@ export const appReducer = (state = initialState) => state
 
 export const rootReducer = combineReducers({
   app: appReducer,
-  blog: blogReducer,
+  characters: CharactersReducer,
+  characterDetails: characterDetailsReducer,
   router: routerReducer,
 })
 

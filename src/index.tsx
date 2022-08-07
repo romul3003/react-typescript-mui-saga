@@ -1,14 +1,13 @@
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { HistoryRouter as Router } from 'redux-first-history/rr6'
-import { Routes, Route } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline'
 import { /* styled, */ ThemeProvider } from '@mui/material/styles'
 
 import { store, history } from './init/store'
 
 import { theme } from './theme/theme'
-import App from './pages/App'
+import RoutesComponent from './routes'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Failed to find the root element')
@@ -22,12 +21,7 @@ root.render(
     <CssBaseline>
       <ThemeProvider theme={theme}>
         <Router history={history}>
-          <Routes>
-            <Route
-              path="/"
-              element={<App />}
-            />
-          </Routes>
+          <RoutesComponent />
         </Router>
       </ThemeProvider>
     </CssBaseline>
