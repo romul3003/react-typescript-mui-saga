@@ -1,2 +1,2 @@
-# Kote
-React typescript application with open source API https://docs.thecatapi.com/
+# Redux sagas
+React typescript application with open source API https://swapi.dev/
