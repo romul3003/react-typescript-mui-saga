@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { filterEmployees } from '../../modules/app/actions'
 import { selectAppState } from '../../modules/app/selectors'
 
-export default function NavigationItem({ id, jobId, title }) {
+export default function NavigationItem({ jobId, title }) {
   const dispatch = useDispatch()
   const appState = useSelector(selectAppState)
 
