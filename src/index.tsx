@@ -7,7 +7,7 @@ import { /* styled, */ ThemeProvider } from '@mui/material/styles'
 import { store, history } from './init/store'
 
 import { theme } from './theme/theme'
-import RoutesComponent from './routes'
+import App from './App'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Failed to find the root element')
@@ -21,7 +21,7 @@ root.render(
     <CssBaseline>
       <ThemeProvider theme={theme}>
         <Router history={history}>
-          <RoutesComponent />
+          <App />
         </Router>
       </ThemeProvider>
     </CssBaseline>

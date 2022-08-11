@@ -22,6 +22,7 @@
     "@mui/material": "^5.8.5",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
     "@redux-devtools/extension": "^3.2.2",
+    "camelcase": "^7.0.0",
     "dotenv-webpack": "^7.1.1",
     "process": "^0.11.10",
     "react": "^18.1.0",
