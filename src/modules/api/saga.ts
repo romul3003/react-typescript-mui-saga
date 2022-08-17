@@ -1,19 +1,21 @@
+import { SagaIterator } from '@redux-saga/core'
 import { put, takeEvery } from 'redux-saga/effects'
-import { API_ACTIONS, apiActions } from './actions'
+import { apiActions } from './actions'
 import api from './api'
+import { FetchApiAction, FETCH_START } from './types'
 
-export function* onApiLoad({ payload, type }) {
-  const actionType = type.replace(API_ACTIONS.FETCH_START, '').toLowerCase()
+export function* onApiLoad({ payload, type }): SagaIterator {
+  const actionType = type.replace(FETCH_START, '').toLowerCase()
 
   try {
     const response = yield api.fetch(actionType, payload)
 
     yield put(apiActions.fetchSuccess(actionType, response))
   } catch (error) {
-    yield put(apiActions.fetchFailure(actionType, error))
+    yield put(apiActions.fetchFailure(actionType, error as Error))
   }
 }
 
-export function* watchApiLoad() {
-  yield takeEvery(action => action.type.startsWith(API_ACTIONS.FETCH_START), onApiLoad)
+export function* watchApiLoad(): SagaIterator {
+  yield takeEvery((action: FetchApiAction) => action.type.startsWith(FETCH_START), onApiLoad)
 }

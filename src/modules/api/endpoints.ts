@@ -1,28 +1,21 @@
 export const JOBS = 'jobs'
 export const EMPLOYEES = 'employees'
 
-// eslint-disable-next-line no-shadow
-export enum END_POINTS {
-  jobs = 'jobs',
-  employees = 'employees'
-}
-
 export type Endpoint = {
   uri: string,
   method: string,
 }
 
-export type Endpoints = {
-  [END_POINTS.jobs]: Endpoint,
-  [END_POINTS.employees]: Endpoint,
-}
+export type ApiKeys = typeof JOBS | typeof EMPLOYEES
+
+export type Endpoints = Record<ApiKeys, Endpoint>
 
 const ENDPOINTS: Endpoints = {
-  [END_POINTS.jobs]: {
+  [JOBS]: {
     uri: '/jobs',
     method: 'GET',
   },
-  [END_POINTS.employees]: {
+  [EMPLOYEES]: {
     uri: '/employees',
     method: 'GET',
   },

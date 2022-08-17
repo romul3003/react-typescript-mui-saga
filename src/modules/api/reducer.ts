@@ -1,54 +1,56 @@
 import camelCase from 'camelcase'
-import { API_ACTIONS } from './actions'
-import ENDPOINTS, { EMPLOYEES, JOBS, END_POINTS } from './endpoints'
-import { Data } from './types'
+import ENDPOINTS, { ApiKeys } from './endpoints'
+import {
+  Data,
+  FetchApiActionTypes,
+  FETCH_FAILURE,
+  FETCH_START,
+  FETCH_SUCCESS,
+} from './types'
 
-type apiState = {
+type ApiState = {
   data: null | Data,
   loading: boolean,
   error: null | string
 }
 
-type Acc = {
-  [JOBS]: apiState,
-  [EMPLOYEES]: apiState,
-}
+type Acc = Record<ApiKeys, ApiState>
 
 const initApiState = () => Object.keys(ENDPOINTS).reduce((acc, next) => {
-  const inner: apiState = {
+  const inner: ApiState = {
     data: null,
     loading: false,
     error: null,
   }
 
-  acc[camelCase(next) as keyof typeof END_POINTS] = inner
+  acc[camelCase(next) as keyof Acc] = inner
 
   return acc
 }, {} as Acc)
 
 const INITIAL_STATE = initApiState()
 
-const apiReducer = (state = INITIAL_STATE, action) => {
-  if (action.type.startsWith(API_ACTIONS.FETCH_START)) {
-    const inner = camelCase(action.type.replace(API_ACTIONS.FETCH_START, ''))
+const apiReducer = (state = INITIAL_STATE, action: FetchApiActionTypes) => {
+  if (action.type.startsWith(FETCH_START)) {
+    const inner = camelCase(action.type.replace(FETCH_START, ''))
 
     return {
       ...state,
       [inner]: {
-        ...state[inner],
+        ...state[inner as keyof Acc],
         loading: true,
         error: null,
       },
     }
   }
 
-  if (action.type.startsWith(API_ACTIONS.FETCH_SUCCESS)) {
-    const inner = camelCase(action.type.replace(API_ACTIONS.FETCH_SUCCESS, ''))
+  if (action.type.startsWith(FETCH_SUCCESS)) {
+    const inner = camelCase(action.type.replace(FETCH_SUCCESS, ''))
 
     return {
       ...state,
       [inner]: {
-        ...state[inner],
+        ...state[inner as keyof Acc],
         data: action.payload,
         loading: false,
         error: null,
@@ -56,13 +58,13 @@ const apiReducer = (state = INITIAL_STATE, action) => {
     }
   }
 
-  if (action.type.startsWith(API_ACTIONS.FETCH_FAILURE)) {
-    const inner = camelCase(action.type.replace(API_ACTIONS.FETCH_FAILURE, ''))
+  if (action.type.startsWith(FETCH_FAILURE)) {
+    const inner = camelCase(action.type.replace(FETCH_FAILURE, ''))
 
     return {
       ...state,
       [inner]: {
-        ...state[inner],
+        ...state[inner as keyof Acc],
         loading: false,
         error: action.payload,
       },
