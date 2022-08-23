@@ -61,7 +61,7 @@ export function* loadCharactersList({ payload }: LoadCharactersAction): SagaIter
 export function* routeChangeSaga(): SagaIterator {
   while (true) {
     const action = yield take(LOCATION_CHANGE)
-    const { pathname } = action.payload.location
+    const { pathname }: {pathname: string} = action.payload.location
 
     if (matchPath(getRouteConfig(CHARACTERS_ROUTE) as string, pathname)) {
       const state: CharactersState = yield select(selectCharacter)
