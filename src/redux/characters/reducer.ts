@@ -24,32 +24,32 @@ const initialState: CharactersState = {
 
 export default function CharactersReducer(state = initialState, action: CharactersActionTypes): CharactersState {
   switch (action.type) {
-  case LOAD_CHARACTERS: {
-    const { page, search } = action.payload
+    case LOAD_CHARACTERS: {
+      const { page, search } = action.payload
 
-    return {
-      ...state,
-      loading: true,
-      page,
-      search,
+      return {
+        ...state,
+        loading: true,
+        page,
+        search,
+      }
     }
-  }
-  case LOAD_CHARACTERS_SUCCESS: {
-    return {
-      ...state,
-      data: action.payload,
-      loading: false,
+    case LOAD_CHARACTERS_SUCCESS: {
+      return {
+        ...state,
+        data: action.payload,
+        loading: false,
+      }
     }
-  }
 
-  case LOAD_CHARACTERS_FAILURE: {
-    return {
-      ...state,
-      error: action.payload,
-      loading: false,
+    case LOAD_CHARACTERS_FAILURE: {
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      }
     }
-  }
-  default:
-    return state
+    default:
+      return state
   }
 }

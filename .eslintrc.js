@@ -28,6 +28,17 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: ['interface', 'typeAlias'],
+        format: [
+          'PascalCase',
+        ],
+      },
+    ],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
 
     'import/no-unresolved': [
       'error',
@@ -52,7 +63,7 @@ module.exports = {
 
     quotes: ['error', 'single'],
     semi: ['warn', 'never'],
-    indent: ['error', 2, { ignoredNodes: ['TemplateLiteral'] }],
+    indent: ['error', 2, { ignoredNodes: ['TemplateLiteral'], SwitchCase: 1 }],
     'arrow-parens': [2, 'as-needed', { requireForBlockBody: true }],
     'default-param-last': 'off',
 

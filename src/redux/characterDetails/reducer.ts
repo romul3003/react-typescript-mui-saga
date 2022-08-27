@@ -23,27 +23,27 @@ const CharacterDetailsReducer = (
   action: LoadCharacterDetailsActionTypes,
 ): CharacterDetailsState => {
   switch (action.type) {
-  case LOAD_CHARACTER_DETAILS:
-    return {
-      ...state,
-      loading: true,
-    }
-  case LOAD_CHARACTER_DETAILS_SUCCESS:
-    return {
-      ...state,
-      loading: false,
-      data: action.payload,
-      error: null,
-    }
-  case LOAD_CHARACTER_DETAILS_FAILURE:
-    return {
-      ...state,
-      loading: false,
-      error: action.payload,
-    }
+    case LOAD_CHARACTER_DETAILS:
+      return {
+        ...state,
+        loading: true,
+      }
+    case LOAD_CHARACTER_DETAILS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+        error: null,
+      }
+    case LOAD_CHARACTER_DETAILS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      }
 
-  default:
-    return state
+    default:
+      return state
   }
 }
 
